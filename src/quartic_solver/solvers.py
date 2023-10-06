@@ -192,9 +192,9 @@ class Solvers:
 
         if c1 == zero:
             if c0 > zero:
-                root0 = -(c0**one_third)
+                root0 = -math.pow(c0, one_third)
             else:
-                root0 = (-c0) ** one_third
+                root0 = math.pow(-c0, one_third)
 
             root_map.append((1, root0))
             return root_map
@@ -209,16 +209,16 @@ class Solvers:
         if delta > zero:
             delta_div_108 = delta / rat108
             beta_re = -c0 / rat2
-            beta_im = (delta_div_108) ** 0.5
+            beta_im = math.sqrt(delta_div_108)
             theta = math.atan2(beta_im, beta_re)
             theta_div_3 = theta / rat3
             angle = theta_div_3
             cs = math.cos(angle)
             sn = math.sin(angle)
             rho_sqr = beta_re * beta_re + beta_im * beta_im
-            rho_pow_third = rho_sqr ** (1.0 / 6.0)
+            rho_pow_third = math.pow(rho_sqr, 1.0 / 6.0)
             temp0 = rho_pow_third * cs
-            temp1 = rho_pow_third * sn * (3**0.5)
+            temp1 = rho_pow_third * sn * math.sqrt(3)
             root0 = rat2 * temp0
             root1 = -temp0 - temp1
             root2 = -temp0 + temp1
@@ -228,19 +228,19 @@ class Solvers:
         elif delta < zero:
             delta_div_108 = delta / rat108
             temp0 = -c0 / rat2
-            temp1 = (-delta_div_108) ** 0.5
+            temp1 = math.sqrt(-delta_div_108)
             temp2 = temp0 - temp1
             temp3 = temp0 + temp1
 
             if temp2 >= zero:
-                temp22 = temp2**one_third
+                temp22 = math.pow(temp2, one_third)
             else:
-                temp22 = (-temp2) ** one_third
+                temp22 = -math.pow(-temp2, one_third)
 
             if temp3 >= zero:
-                temp33 = temp3**one_third
+                temp33 = math.pow(temp3, one_third)
             else:
-                temp33 = (-temp3) ** one_third
+                temp33 = -math.pow(-temp3, one_third)
 
             root0 = temp22 + temp33
             root_map.append((1, root0))
@@ -303,7 +303,7 @@ class Solvers:
 
         q2third = q2 / rat3
         c0 = q0 - q2third * (q1 - rat2 * q2third * q2third)
-        c1 = q1 - rat2 * q2third * q2third
+        c1 = q1 - q2 * q2third
         RootmapLocal = Solvers.solve_depressed_cubic(c0, c1)
 
         for rm in RootmapLocal:
