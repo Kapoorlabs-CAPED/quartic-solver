@@ -1,6 +1,6 @@
 import pytest
 
-from quartic_solver import Solvers
+from quartic_solver_kapoorlabs import Solvers
 
 
 # Coefficients are in the order of constant, x^1, x^2, x^3, x^4
