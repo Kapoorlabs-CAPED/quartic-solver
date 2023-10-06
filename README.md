@@ -19,7 +19,7 @@ This [caped] package was generated with [Cookiecutter] using [@caped]'s [cookiec
 
 You can install `quartic-solver` via [pip]:
 
-    pip install quartic-solver
+    pip install quartic-solver-kapoorlabs
 
 
 
