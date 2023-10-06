@@ -27,7 +27,9 @@ class Solvers:
         rat3 = 3
         rat4 = 4
         rat6 = 6
-        print(p)
+        print(f"The p that came in {p}")
+        if p[4] == 0:
+            return Solvers.solve_cubic(p)
         q0 = p[0] / p[4]
         q1 = p[1] / p[4]
         q2 = p[2] / p[4]
@@ -38,7 +40,7 @@ class Solvers:
         c0 = q0 - q3_fourth * (q1 - q3_fourth * (q2 - q3_fourth_sqr * rat3))
         c1 = q1 - rat2 * q3_fourth * (q2 - rat4 * q3_fourth_sqr)
         c2 = q2 - rat6 * q3_fourth_sqr
-        print(c0, c1, c2)
+        print(f"The c that are computed  {c0}, {c1}, {c2}")
         root_map_local = Solvers.solve_depressed_quartic(c0, c1, c2)
         for rm in root_map_local:
             root = rm[1] - q3_fourth
@@ -261,6 +263,7 @@ class Solvers:
         c2_half = c2 / rat2
         a1 = c0 - c2_half * c2_half
         delta = rat256 * c0 * a1 * a1
+        print(f"printing {c0}, {c2}, {delta}, {c2_half}, {a1}")
         if delta > zero:
             if c2 < zero and a1 < zero:
                 temp0 = math.sqrt(-a1)
@@ -292,6 +295,8 @@ class Solvers:
         rat2 = 2
         rat3 = 3
 
+        if p[3] == 0:
+            return Solvers.solve_quadratic(p)
         q0 = p[0] / p[3]
         q1 = p[1] / p[3]
         q2 = p[2] / p[3]
